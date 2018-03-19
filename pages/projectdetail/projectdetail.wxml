@@ -1,0 +1,41 @@
+<!--index.wxml-->
+<view class="container1">
+  <!--顶部-->
+  <view class="bugdetailheader">
+    <view class='bugdetailheaderLine bugNamebox flex-wrp'>
+      <view class="left bugId">{{project.state}}</view>
+      <view class='right bugName'>{{project.proName}}</view>
+    </view>
+    <view class='bugdetailheaderLine'>
+      <label class='fullLine'>缺陷名称：{{project.proName}}</label>
+    </view>
+    <view class='bugdetailheaderLine flex-wrp'>
+      <view class='halfLine flex-item'>创建人：{{project.creUserName}}</view>
+      <view class='halfLine flex-item'>创建时间：{{project.createTimeStr}}</view>
+    </view>
+    <view class='bugdetailheaderLine flex-wrp'>
+      <view class='halfLine flex-item'>开始时间：{{project.startTimeStr}}</view>
+      <view class='halfLine flex-item'>结束时间：{{project.endTimeStr}}</view>
+    </view>
+  </view>
+  <view class='bugdetailCon'>
+    <view class='title'>项目模块</view>
+    <view class='content'>
+      <view class='textBox' wx:if="{{project.proModellist.length>0}}">
+        <span class="modelItem" wx:for="{{project.proModellist}}">{{item}}</span>
+      </view>
+      <view class='textBox' wx:if="{{project.proModellist.length<=0}}">
+        暂无项目模块
+      </view>
+    </view>
+  </view>
+  <!--缺陷描述-->
+  <view class='bugdetailCon'>
+    <view class='title'>项目描述</view>
+    <view class='content'>
+      <view class='textBox'>
+        <text selectable="true">{{project.remark}}</text>
+      </view>
+    </view>
+  </view>
+</view>

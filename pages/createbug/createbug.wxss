@@ -1,0 +1,16 @@
+/**index.wxss**/
+.imgList .imgBox .video{
+  width:95rpx;
+  height:130rpx;
+}
+.videoBox{
+  position: fixed;
+  z-index: 1002;
+  width: 100%;
+  height: 100%;
+}
+.videoBox video{
+  width: 100%;
+  height: 100%
+}
+ 

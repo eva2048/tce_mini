@@ -1,0 +1,139 @@
+/**index.wxss**/
+
+.bugdetailheader{
+  width: 100%;
+  background: #fff;
+  padding: 20rpx 20rpx 10rpx;
+  box-sizing: border-box;
+  color: #a6a6a6;
+}
+.bugdetailheader .bugdetailheaderLine{
+  margin-bottom: 24rpx;
+}
+.bugdetailheader .bugNamebox{
+  align-items: center;
+}
+.bugdetailheader .bugdetailheaderLine .bugId{
+  color: #52250a;
+  font-size: 10px;
+  font-weight: bold;
+  background: #ffe142;
+  border-radius: 3rpx;
+  padding: 3px 15rpx;
+  margin-right: 20rpx;
+}
+.bugdetailheader .bugdetailheaderLine .bugName{
+  font-size: 16px;
+  color: #434343;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bugdetailheader .bugdetailheaderLine .halfLine{
+  width: 50%;
+  box-sizing: border-box;
+  padding: 0 15rpx 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bugdetailheader .bugdetailheaderLine .levelIcon{
+  background: #0097ff;
+  color: #fff;
+  font-size: 12px;
+  padding: 0rpx 10rpx;
+}
+.bugdetailheader .bugdetailheaderLine .fullLine{
+  width: 100%;
+  overflow: hidden;
+  /*text-overflow: ellipsis;
+  white-space: nowrap;*/
+  display: block
+}
+/*缺陷属性*/
+.bugdetailCon{
+  margin-top: 10px;
+  background: #fff;
+}
+.bugdetailCon .title{
+  color: #a6a6a6;
+  padding: 20rpx;
+  border-bottom: 1px solid #eee;
+}
+.bugdetailCon .content{
+  padding: 0 20rpx;
+}
+.bugdetailCon .content .textBox{
+  line-height: 22px;
+}
+.bugdetailCon .content .fileItem .downloadIcon{
+  width: 14px;
+  height: 14px;
+  margin-top: 2px;
+  margin-left: 40rpx;
+}
+.bugdetailCon .content .fileItem{
+  border-bottom:1px solid #eee;
+}
+.bugdetailCon .content .fileItem .fileName{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.textBox .textLine .halfText{
+  width: 50%;
+  padding-right: 15rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+  color: #434343;
+  line-height:24px;
+}
+.bugdetailCon .content .textBox{
+  padding:10rpx 0;
+}
+/*历史操作*/
+.historyList .historyItem{
+  padding: 20rpx 0;
+  border-bottom: 1px solid #eee;
+  flex-direction: row;
+}
+.historyList .historyItem .imgBox image{
+  width: 27px;
+  height: 27px;
+}
+.historyList .historyItem .infoBox{
+  padding-left: 15rpx;
+  width: 636rpx;
+}
+.historyList .historyItem .infoBox .infoLine1{
+  color: #bababa;
+}
+.historyList .historyItem .infoBox .infoLine1 .user{
+  max-width: 65%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.historyList .historyItem .infoBox .infoLine1 .time{
+  float: right
+}
+.historyList .historyItem .infoBox .infoLine2{
+  color:#2c343b;
+  font-size: 14px;
+  margin-top: 7px;
+}
+.historyList .historyItem .infoBox .infoLine3{
+  color: #7f8082;
+  margin-top: 5px;
+  line-height: 19px;
+}
+text{
+  word-break: break-all
+}
+

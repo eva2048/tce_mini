@@ -1,0 +1,37 @@
+/* pages/choosedevice/choosedevice.wxss */
+.selectList{
+  padding: 0 20rpx;
+  background: #fff;
+}
+.selectItem{
+  align-items: center;
+  background: #fff;
+  padding: 20rpx 0;
+  border-bottom: 1px solid #eee;
+}
+.selectItem .selectIcon{
+  width: 60rpx;
+  justify-content: flex-end;
+}
+.selectItem .selectInfo{
+  overflow: hidden;
+  justify-content: space-between;
+  border-right: 1px solid #eee;
+  padding-right: 20rpx;
+  color: #373737;
+}
+
+.selectItem .selectInfo .text{
+  width: 48%;
+  overflow: hidden;
+  line-height: 44rpx;
+  white-space: nowrap;
+}
+.selectItem .selectInfo .text view{
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.selectItem .selectIcon image{
+  width: 36rpx;
+  height: 36rpx;
+}

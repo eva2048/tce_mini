@@ -1,0 +1,32 @@
+<!--pages/login/login.wxml-->
+<!--弹窗引用-->
+<import src="../../component/wetoast/wetoast.wxml"/>
+<template is="wetoast" data="{{...__wetoast__}}"/>
+<view class='container'>
+  <view class='logoBox'>
+    <image class='logo' src='../images/itemImg.png'></image>
+  </view>
+  <view class='formBox'>
+    <view class='inputBox flex-wrp'>
+      <view class='right logininput'>
+        <image src='../images/user.png'></image>
+        <input class='inputtext' maxlength="30" type='text' value='{{currentname}}' bindinput='getname' placeholder='{{placehold}}'/>
+      </view>
+      <view class='left' wx:if="{{name.length>0}}" bindtap='clearInput' hover-class='none'>
+        <image src='../images/delete.png'></image>
+      </view>
+    </view>
+    <view class='inputBox flex-wrp'>
+      <view class='right logininput'>
+        <image src='../images/pwd.png'></image>
+        <input class='inputtext' maxlength='30' wx:if="{{seepwd}}" type="text"  value='{{currentpassword}}' bindinput='getpwd' placeholder='{{placehold1}}'/>
+        <input class='inputtext' maxlength='30' wx:if="{{!seepwd}}" type="text" password value='{{currentpassword}}' bindinput='getpwd' placeholder='{{placehold1}}'/>
+      </view>
+      <view class='left' bindtap='changepwd' hover-class='none'>
+        <image wx:if="{{seepwd}}" src='../images/see.png'></image>
+        <image wx:if="{{!seepwd}}" src='../images/unsee.png'></image>
+      </view>
+    </view>
+    <view class='btnLink' bindtap='loginclick'>登录</view>
+  </view>
+</view>

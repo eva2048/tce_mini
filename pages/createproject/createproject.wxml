@@ -1,0 +1,107 @@
+<!--pages/createproject/createproject.wxml-->
+<import src="../../component/wetoast/wetoast.wxml"/>
+<template is="wetoast" data="{{...__wetoast__}}"/>
+<view class="container">
+  <view class='createList'>
+    <view class='createItem flex-wrp'>
+      <view class='left'>项目名称</view>
+      <view class='right'>
+          <input maxlength='20' bindinput='getname' class='inputText' type='text' value="{{currentname}}"></input>
+      </view>
+    </view>
+    <view class='createItem flex-wrp'>
+      <view class='left'>开始时间</view>
+      <view class='right'>
+        <view class='rightText'>
+          <picker mode="date" value="{{project.starttime}}" start="{{selectStarttime}}" end="{{project.endtime}}" bindchange="bindDateChange">
+            <view class="picker">
+              当前选择: {{project.starttime}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='icon'>
+        <image src='../images/itemImg1.png'></image>
+      </view>
+    </view>
+    <view class='createItem flex-wrp'>
+      <view class='left'>结束时间</view>
+      <view class='right'>
+        <view class='rightText'>
+          <picker mode="date" value="{{project.endtime}}" start="{{project.starttime==''?selectStarttime:project.starttime}}" bindchange="bindDateChange1">
+            <view class="picker">
+              当前选择: {{project.endtime}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='icon'>
+        <image src='../images/itemImg1.png'></image>
+      </view>
+    </view>
+    <view class='createItem flex-wrp'>
+      <view class='left'>缺陷流程</view>
+      <view class='right'>
+        <view class='rightText'>
+          <picker bindchange="bindFlowChange" value="{{project.flowIndex}}" range="{{flow}}">
+            <view class="picker">
+              当前选择：{{flow[project.flowIndex]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='icon'>
+        <image src='../images/itemImg1.png'></image>
+      </view>
+    </view>
+  </view>
+  <!--项目模块-->
+  <view class='fileUpload'>
+    <view class='title flex-wrp'>
+      <view class='left'>项目模块</view>
+      <view class='right' bindtap='showAddmodule' style='padding:20rpx'><image class='uploadIcon' src='../images/addIcon.png'></image></view>
+    </view>
+    <view class='moduleList'>
+      <view class='noModule' wx:if="{{project.mod.length==0}}">暂无模块</view>
+      <view class='moduleItem' wx:for="{{project.mod}}">
+        <icon bindtap='deleteModule' data-index="{{index}}" type='clear' class='delete' size='14' color='#0097ff'></icon>
+        <view class='text'>{{item}}</view>  
+      </view>
+    </view>
+  </view>
+  <navigator url='/pages/describe/describe?describe={{describe}}'>
+  <view class='createList'>
+    <view class='createItem flex-wrp'>
+      <view class='left'>项目描述</view>
+      <view class='right'>
+        <view class='rightText'>
+          项目描述：{{describe}}
+        </view>
+      </view>
+      <view class='icon'>
+        <image src='../images/itemImg1.png'></image>
+      </view>
+    </view>
+  </view>
+  </navigator>
+  <view style='margin-bottom:100rpx;'></view>
+  <!--处理按钮-->
+  <view class='bugdetailBtn' bindtap='submitProject'>提交</view>
+  <view class='fullcoverBox' wx:if="{{addmoduleShow}}" bindtap='hideAddmodule'>
+    <view class='flex-wrp modalBox' >
+      <view class='modal'>
+        <view class='modalHeader flex-wrp'>
+          <view class='right'>新建模块</view>
+          <image bindtap='hideAddmodule' class='left' class='closeIcon' src='../images/delete.png'></image>
+        </view>
+        <view class='modalBody'>
+          <input max-length="10" type='text' catchtap='showAddmodule' focus="true" value='{{currentnewmodule}}' bindinput='bindModuleInput' class='inputText'></input>
+        </view>
+        <view class='modalBtnBox flex-wrp'>
+          <view bindtap='hideAddmodule' class='modalBtn modalBtnG'>取消</view>
+          <view catchtap='addModule' class='modalBtn'>确定</view>
+        </view>
+      </view>      
+    </view>
+  </view>
+</view>

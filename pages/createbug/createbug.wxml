@@ -1,0 +1,167 @@
+<!--index.wxml-->
+<import src="../../component/wetoast/wetoast.wxml"/>
+<template is="wetoast" data="{{...__wetoast__}}"/>
+<view class="container">
+  <view class='createbugTitle'>
+    项目名称：{{projectName}}
+  </view>
+  <view class='createList'>
+    <view class='createItem flex-wrp'>
+      <view class='left'>缺陷名称</view>
+      <view class='right'>
+          <input maxlength='60' bindinput='getname' class='inputText' type='text' value='{{currentname}}'></input>
+      </view>
+    </view>
+    <view class='createItem flex-wrp' wx:if="{{currentProject.testType!='2'}}">
+      <view class='left'>缺陷类型</view>
+      <view class='right'>
+        <view class='rightText'>
+          <picker bindchange="bindBugtypeChange" value='0' range="{{bugtypelist}}" range-key="{{'name'}}">
+            <view class="picker">
+              {{bugtypelist[bug.bugtype].name}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='icon'>
+        <image src='../images/itemImg1.png'></image>
+      </view>
+    </view>
+    <view class='createItem flex-wrp'>
+      <view class='left'>缺陷等级</view>
+      <view class='right'>
+        <view class='rightText'>
+          <picker bindchange="bindBuglevelChange" value='{{bug.buglevel}}' range="{{buglevel}}" range-key="{{'name'}}">
+            <view class="picker">
+              {{buglevel[bug.buglevel].name}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='icon'>
+        <image src='../images/itemImg1.png'></image>
+      </view>
+    </view>
+    <view class='createItem flex-wrp'>
+      <view class='left'>出现频率</view>
+      <view class='right'>
+        <view class='rightText'>
+          <picker bindchange="bindBugrateChange" value='0' range="{{bugrate}}">
+            <view class="picker">
+              {{bugrate[bug.bugrate]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='icon'>
+        <image src='../images/itemImg1.png'></image>
+      </view>
+    </view>
+  </view>
+  <view class='createList'>
+    <navigator url='/pages/choosedevice/choosedevice?mobPhones={{mobPhones}}&device={{bugdevice}}' >
+      <view class='createItem flex-wrp' wx:if="{{projectType==0}}" style='border-bottom:1px solid #eee;'>
+        <view class='left'>测试环境</view>
+        <view class='right'>
+          <view class='rightText'>
+            <view wx:if="{{bugdevice==0}}">未选择设备</view>
+            <view wx:if="{{bugdevice!=0}}">已选设备{{bugdevice}}</view>
+          </view>
+        </view>
+        <view class='icon'>
+          <image src='../images/itemImg1.png'></image>
+        </view>
+      </view>
+    </navigator>
+    <view class='createItem flex-wrp' wx:if="{{projectType!=0}}">
+      <view class='left'>角色</view>
+      <view class='right'>
+        <view class='rightText'>
+          <picker bindchange="bindBugroleChange" value='0' range="{{bugrole}}">
+            <view class="picker">
+              {{bugrole[bug.bugrole]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='icon'>
+        <image src='../images/itemImg1.png'></image>
+      </view>
+    </view>
+    <view class='createItem flex-wrp' wx:if="{{projectType!=0}}">
+      <view class='left'>处理人</view>
+      <view class='right'>
+        <view class='rightText'>
+          <picker bindchange="bindBughandleChange" value='0' range="{{bughandle[bug.bugrole]}}">
+            <view class="picker">
+              处理人：{{bughandle[bug.bugrole][bug.bughandle]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='icon'>
+        <image src='../images/itemImg1.png'></image>
+      </view>
+    </view>
+    <view class='createItem flex-wrp'>
+      <view class='left'>项目模块</view>
+      <view class='right'>
+        <view class='rightText'>
+          <picker bindchange="bindBugmoduleChange" value='0' range="{{bugmodule}}">
+            <view class="picker">
+              {{bugmodule[bug.bugmodule]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='icon'>
+        <image src='../images/itemImg1.png'></image>
+      </view>
+    </view>
+  </view>
+  <navigator url='/pages/describe/describe?describe={{describe}}'>
+  <view class='createList'>
+    <view class='createItem flex-wrp'>
+      <view class='left'>缺陷描述</view>
+      <view class='right'>
+        <view class='rightText'>
+          {{describe}}
+        </view>
+      </view>
+      <view class='icon'>
+        <image src='../images/itemImg1.png'></image>
+      </view>
+    </view>
+  </view>
+  </navigator>
+  <!--上传图片-->
+  <view class='fileUpload'>
+    <view class='title flex-wrp'>
+      <view class='left'>图片附件</view>
+      <view class='right' style='padding:20rpx;' bindtap='chooseFile'><image class='uploadIcon' src='../images/imgIcon.png'></image></view>
+    </view>
+    <view class='fileList' style='overflow:hidden'>
+      <scroll-view scroll-x="true" class='imgList'>
+        <view class='imgBox' wx:for="{{fileList}}">
+          <image wx:if="{{item.type=='img'}}" mode="aspectFill" class='img' data-src='{{item.src}}' src='{{item.src}}' bindtap='previewImage'></image>
+          <image wx:if="{{item.type=='video'}}" mode="aspectFill" class='img' data-src='{{item.src}}' src='../images/video_bg.png' bindtap='playVideo'></image>
+          <icon data-index="{{index}}" bindtap="delImage" class='delIcon' type='clear' size='14'></icon>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  <view class='marginb_100'></view>
+  <!--处理按钮-->
+  <view bindtap='submitBug' class='bugdetailBtn'>提交</view>
+  <!--退出登录-->
+  <view class='coverBox coverBox1' wx:if="{{chooseFile}}" bindtap="hideUserInfoShow">
+    <view class='selectUl bottomLay'>
+      <view bindtap='loginout' bindtap='chooseImg' class='selectItem selectItemCenter' >
+        图片
+      </view>
+      <view class='selectItem selectItemCenter' bindtap='chooseVideo'>
+        视频
+      </view>
+    </view>
+  </view>
+</view>

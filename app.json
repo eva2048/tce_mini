@@ -1,0 +1,25 @@
+{
+  "pages":[ 
+    "pages/login/login",
+    "pages/main/main",
+    "pages/bug/bug",
+    "pages/chart/chart",
+    "pages/handle/handle",
+    "pages/createproject/createproject",
+    "pages/projectdetail/projectdetail",
+    "pages/createbug/createbug",
+    "pages/choosedevice/choosedevice",
+    "pages/bugdetail/bugdetail",
+    "pages/describe/describe",
+    "pages/search/search",
+    "pages/searchbug/searchbug",
+    "pages/video/video"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#0097ff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"white",
+    "backgroundColor":"#efeff4"
+  }
+}

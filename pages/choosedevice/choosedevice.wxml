@@ -1,0 +1,36 @@
+<!--pages/choosedevice/choosedevice.wxml-->
+<view class="container">
+  <view class='selectList'>
+    <view class='selectItem flex-wrp'  bindtap='noDevice'>
+      <view class='right selectInfo'>
+        <view class='text'>
+          不选择设备
+        </view>
+      </view>
+      <view class='left selectIcon'>
+        <!--<icon wx:if="{{deviceselected!=0}}" type='success' size='18' color='#ccc'></icon>
+        <icon wx:if="{{deviceselected==0}}" type='success' size='18'></icon>-->
+        <image src='../images/icon_successgray.png' wx:if="{{deviceselected!=0}}"></image>
+        <image src='../images/icon_success.png' wx:if="{{deviceselected==0}}"></image>
+      </view>
+    </view>
+    <view class='selectItem flex-wrp' wx:for="{{devices}}" bindtap='changeDevice' data-index="{{index}}">
+      <view class='right selectInfo'>
+        <view class='text'>
+          <view>设备名称：{{item.mobCell}}</view>
+          <view>设备型号：{{item.sysVersion}}</view>
+          <view>系统类型：{{item.mobbrand}}</view>
+        </view>
+        <view class='text'>
+          <view>网络类型：{{item.netType}}</view>
+          <view>运营商：{{item.carrieroperator}}</view>
+          <view>剩余容量：{{item.capacity}}</view>
+        </view>
+      </view>
+      <view class='left selectIcon'>
+        <image src='../images/icon_successgray.png' wx:if="{{index!=(deviceselected-1)}}"></image>
+        <image src='../images/icon_success.png' wx:if="{{index==(deviceselected-1)}}"></image>
+      </view>
+    </view>
+  </view>
+</view>

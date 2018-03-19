@@ -1,0 +1,167 @@
+/**index.wxss**/
+.container{
+  background: #efeff4;
+}
+.refresh-block {  
+  text-align: center;
+  background: #fff;
+  background: #0097ff
+}  
+.refresh-block image {  
+  width: 30px;  
+  height: 30px;  
+} 
+.loading-block {  
+  text-align: center;
+}
+.loading-block image {  
+  width: 30px;  
+  height: 30px;  
+} 
+.nomore{
+  text-align: center;
+  padding-bottom: 10rpx;
+  color: #b4b4b4;
+}
+.header{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0rpx 20rpx;
+  background: #0097ff;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+  height: 44px;
+  position: fixed;
+  top: 0;
+}
+.projectType{
+  margin-right: 20rpx;
+  display: flex;
+  align-items: center
+}
+.projectType image{
+  width: 8px;
+  height: 4px;
+  vertical-align: center;
+  margin-left: 10rpx;
+}
+.projectType .selectType{
+  font-size: 12px;
+  color: #fff;
+  line-height: 44px;
+}
+.searchBox{
+  width: 480rpx;
+  height: 25px;
+  background: #91c7ff;
+  font-size: 12px;
+  border-radius: 12px;
+  padding: 0px 26rpx;
+  box-sizing: border-box;
+  line-height: 25px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+.searchBox .searchString{
+  width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.searchBox .searchIcon{
+  margin-right: 20rpx;
+  float: left;
+  display: flex
+}
+.header .mineBox{
+  padding: 0 10rpx;
+  display: flex
+}
+.header .userInfo{
+  width: 22px;
+  height: 22px;
+}
+/*项目列表*/
+.projectList{
+  padding-top: 44px;
+  background: #efeff4;
+  box-sizing: border-box;
+}
+.projectItem{
+  width: 100%;
+  padding: 10px 20rpx 0px;
+  box-sizing: border-box;
+  background: #fff;
+  margin-bottom: 8px;
+}
+.projectItem .itemLine{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 8px;
+}
+.projectItem .itemLine .itemNamebox{
+  flex-grow: 1;
+}
+.projectItem .itemLine .itemImg{
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+.projectItem .itemLine .itemImg1{
+  justify-content: flex-end; 
+}
+.projectItem .itemLine .itemName{
+  max-width: 480rpx;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+  font-size: 16px;
+  color: #434343;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.projectItem .itemLine .itemCicle{
+  width: 6px;
+  height: 6px;
+  background: #fd3743;
+  display: inline-block;
+  border-radius: 8rpx;
+  margin-left: 10rpx;
+  flex-shrink: 0;
+}
+.projectItem .itemLine .itemState{
+  flex-shrink: 0;
+  font-size: 10px;
+  margin-right: 10rpx;
+  color: #0097ff;
+  padding: 3px 3px 2px;
+  border-radius: 4rpx;
+  border: 1px solid #0097ff;
+}
+.projectItem .itemLine .itemStateY{
+  color:#ff9900;
+  border-color: #ff9900;
+}
+.projectItem .itemLine .itemStateG{
+  color:#b5b5b5;
+  border-color: #b5b5b5;
+}
+.projectItem .itemLine .itemInfo{
+  float: left;
+  width: 50%;
+  font-size: 12px;
+}
+.projectItem .itemLine .itemInfo .itemInfogray{
+  color: #a6a6a6;
+  max-width: 60%;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+
+

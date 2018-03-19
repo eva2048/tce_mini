@@ -1,0 +1,7 @@
+<!--pages/chart/chart.wxml-->
+<view class='container'>
+  <view class='tabBox flex-wrp'>
+    <view class="tabItem {{seriesIndex==index?'current':''}}" bindtap='tabClick' wx:for="{{series}}" data-index="{{index}}">{{item.name}}</view>
+  </view>
+  <canvas canvas-id="columnCanvas" class="canvas" bindtouchstart="touchHandler"></canvas>
+</view>

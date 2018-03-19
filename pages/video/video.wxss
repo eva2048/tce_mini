@@ -1,0 +1,9 @@
+/* pages/video/video.wxss */
+.videoBox{
+  width: 100%;
+  height: 100%;
+}
+.videoBox video{
+  width: 100%;
+  height: 100%;
+}

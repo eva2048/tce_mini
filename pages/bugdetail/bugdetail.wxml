@@ -1,0 +1,104 @@
+<!--index.wxml-->
+<view class="container1">
+  <!--顶部-->
+  <view class="bugdetailheader">
+    <view class='bugdetailheaderLine bugNamebox flex-wrp'>
+      <view class="left bugId">{{bug.id}}</view>
+      <view class='right bugName'>{{bug.bugName}}</view>
+    </view>
+    <view class='bugdetailheaderLine'>
+      <label class='fullLine'>缺陷名称：{{bug.bugName}}</label>
+    </view>
+    <view class='bugdetailheaderLine'>
+      <label class='fullLine'>所属项目：{{bug.projectName}}</label>
+    </view>
+    <view class='bugdetailheaderLine flex-wrp'>
+      <view class='halfLine flex-item'>提交用户：{{bug.creUserName}}</view>
+      <view class='halfLine flex-item'>提交时间：{{bug.bugCreateTime}}</view>
+    </view>
+    <view class='bugdetailheaderLine flex-wrp'>
+      <view class='halfLine flex-item'>缺陷等级：<span class="levelIcon">{{bug.bugLevelName}}</span></view>
+      <view class='halfLine flex-item'>缺陷状态：<span class="levelIcon">{{bug.bugStateName}}</span></view>
+    </view>
+    <view class='bugdetailheaderLine'>
+      <label class='fullLine'>缺陷属性：{{bug.category}}</label>
+    </view>
+  </view>
+  <!--缺陷描述-->
+  <view class='bugdetailCon'>
+    <view class='title'>缺陷描述</view>
+    <view class='content'>
+      <view class='textBox'>
+        <text selectable="true">{{bug.bugDesc}}</text>
+      </view>
+    </view>
+  </view>
+  <!--缺陷附件-->
+  <view class='bugdetailCon'>
+    <view class='title'>缺陷附件</view>
+    <view class='content'>
+      <view class='fileList'>
+        <view class='fileItem flex-wrp' wx:for="{{bug.bugFiles}}" wx:if="{{item.fltype=='1'||item.fltype=='4'}}">
+          <view bindtap='openFile' data-src='{{item.flpath}}' class='right fileName'>{{item.oldFlName}}</view>
+          <view class='left' wx:if="{{item.fltype=='1'}}"><image class='downloadIcon' bindtap='downloadFile' data-src="{{item.flpath}}" src='../images/fileItem_download.png'></image></view>
+          <view class='left' wx:if="{{item.fltype=='4'}}" style='color:#ccc;padding-left:25rpx;'>文件格式不支持预览</view>
+        </view>
+      </view>
+      <scroll-view scroll-x="true" class='imgList'>
+        <view class='imgBox' wx:for="{{imageList}}">
+          <image wx:if="{{item.fltype=='2'}}" mode="aspectFill" class='img' data-src='{{item.flpath}}' src='{{item.flpath}}' bindtap='previewImage'></image>
+          <image wx:if="{{item.fltype=='3'}}" mode="aspectFill" class='img' data-src='{{item.flpath}}' src='../images/video_bg.png' bindtap='playVideo'></image>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  <!--系统配置-->
+  <view class='bugdetailCon' wx:if="{{hasSetdata}}">
+    <view class='title'>测试环境</view>
+    <view class='content'>
+      <view class='textBox'>
+        <view class='textLine flex-wrp'>
+          <view class='halfText flex-item'>设备名称：{{bug.moblie.typeId}}</view>
+          <view class='halfText flex-item'>设备型号：{{bug.moblie.systemVersion}}</view>
+        </view>
+        <view class='textLine flex-wrp'>
+          <view class='halfText flex-item'>系统类型：{{bug.moblie.mobbrand}}</view>
+          <view class='halfText flex-item'>网络类型：{{bug.moblie.netType}}</view>
+        </view>
+        <view class='textLine flex-wrp'>
+          <view class='halfText flex-item'>运营商：{{bug.moblie.carrieroperator}}</view>
+          <view class='halfText flex-item'>剩余容量：{{bug.moblie.memory}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--历史操作-->
+  <view class='bugdetailCon'>
+    <view class='title'>历史操作</view>
+    <view class='content'>
+      <view class='historyList'>
+        <view class='historyItem flex-wrp' style="align-items='stretch'" wx:for="{{bug.histories}}">
+          <view class='flex-item imgBox'>
+            <image src="../images/{{item.iconName}}" mode='aspectFit'></image>
+          </view>
+          <view class='flex-item infoBox'>
+            <view class='infoLine infoLine1'>
+              <view class='floatleft user'>来自\t{{item.creUserName}}</view>
+              <view class='floatright time'>{{item.createtimeStr}}</view>
+              <view class='clearfix'></view>            
+            </view>
+            <view class='infoLine infoLine2'>
+              操作类型：{{item.opertype}}
+            </view>
+            <view class='infoLine infoLine3'>
+              <text selectable="true">备注：{{item.remark}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='marginb_100'></view>
+  <!--处理按钮-->
+  <view bindtap='handleLink' wx:if="{{isHandle}}" class='bugdetailBtn'>处理</view>
+</view>

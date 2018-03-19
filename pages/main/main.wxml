@@ -1,0 +1,74 @@
+<!--index.wxml-->
+<!--弹窗引用-->
+<import src="../../component/wetoast/wetoast.wxml"/>
+<template is="wetoast" data="{{...__wetoast__}}"/>
+<view class="container">
+  <!--新建项目按钮-->
+  <!--<navigator url='/pages/createproject/createproject'>-->
+  <view class='createBtn' bindtap="gotoPage" data-link="createproject">
+    <image src='../images/createBtn.png'></image>
+  </view>
+  <!--</navigator>-->
+  <!--顶部-->
+  <view class="header flex-wrp">
+    <view class="projectType flex-item" bindtap="changeFilterShow">
+      <label class='selectType'>{{currentFilter}}</label>
+      <image src='../images/header_dropdown.png'></image>
+    </view>
+    <view class="searchBox flex-item" bindtap='gotoPage'  data-link="search">  
+      <icon type='search' size='12' class='searchIcon' color='#fff'></icon>
+      <label wx:if="{{searchString.length==0}}">请输入项目名称</label>
+      <label class='searchString' wx:if="{{searchString.length!=0}}">{{searchString}}</label>     
+    </view>
+    <view class="mineBox flex-item" bindtap="changeUserInfoShow">
+      <image class='userInfo' src='../images/header_mine.png'></image>
+    </view> 
+  </view>
+  <!--项目类型筛选-->
+  <view class='coverBox' wx:if="{{filterShow}}" bindtap="hideFilterShow">
+    <view class='selectUl'>
+      <view class="selectItem {{item.selected?'selectedItem':''}}" wx:for="{{filter}}" bindtap="changeFilter" data-index="{{index}}">
+        <span>{{item.name}}</span>
+        <icon wx:if="{{item.selected}}" class='floatright' type='success_no_circle' size='18' color='#008bff'></icon>
+        <view class='clearfix'></view>
+      </view>
+    </view>
+  </view>
+  <!--退出登录-->
+  <view class='coverBox' wx:if="{{userInfoShow}}" bindtap="hideUserInfoShow">
+    <view class='selectUl bottomLay'>
+      <view bindtap='loginout' class='selectItem selectItemCenter' >
+          退出账号
+      </view>
+      <view class='selectItem selectItemCenter'>
+        取消
+      </view>
+    </view>
+  </view>
+  <!--项目列表-->
+  <view class='projectList' style="height:{{scrollHeight}}px;" >
+    <view class='projectItem' wx:for="{{projects}}" bindtap='detailLink' data-id="{{item.id}}" data-index="{{index}}">
+      <view class='itemLine'>
+        <image wx:if="{{item.proType=='1'&&item.proCategory=='1'}}" class='itemImg' src='../images/itemImg.png'></image>
+        <image wx:if="{{item.proType=='1'&&item.proCategory=='2'}}" class='itemImg' src='../images/itemImgvip.png'></image>
+        <image wx:if="{{item.proType=='0'}}" class='itemImg' src='../images/itemImgat.png'></image>
+        <view class='itemNamebox flex-wrp'>
+          <label class='itemName'>{{item.proName}}</label>
+          <label wx:if="{{item.state=='进行中'}}" class="itemState">{{item.state}}</label>
+          <label wx:if="{{item.state=='已结项'}}" class="itemState itemStateG">{{item.state}}</label>
+          <label wx:if="{{item.state=='结项中'}}" class="itemState itemStateY">{{item.state}}</label>
+        </view>
+        <span wx:if="{{item.hasbug&&item.state!='已结项 '}}" class='itemCicle'></span>
+        <image class='itemImg itemImg1' src='../images/itemImg1.png'></image> 
+      </view>
+      <view class='itemLine'>
+        <label class='itemInfo'><span class='floatleft'>创建人：</span><span class="itemInfogray">{{item.creUserName}}</span></label>
+        <label class='itemInfo'><span class='floatleft'>提交时间：</span><span class="itemInfogray">{{item.createTimeStr}}</span></label>
+        <view class='clearfix'></view>
+      </view>
+    </view>
+    <view class='nomore' wx:if="{{nomoredata}}">
+      没有更多了
+    </view>
+  </view>
+</view>

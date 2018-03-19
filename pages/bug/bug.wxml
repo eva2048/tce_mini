@@ -1,0 +1,107 @@
+<!--index.wxml-->
+<view class="container">
+  <!--新建缺陷按钮-->
+  <view class='createBtn' wx:if="{{isDoing}}" bindtap='gotoPage' data-link="createbug">
+    <image src='../images/createBtn.png'></image>
+  </view>
+  <!--顶部-->
+  <view class="bugheader flex-wrp">    
+    <view class='projectInfo flex-item'>
+      <span class='projectState'>{{currentproject.state}}</span>
+      <label class='projectName'><navigator url='/pages/projectdetail/projectdetail'>{{currentproject.proName}}</navigator></label>
+      <navigator url='/pages/chart/chart'><view class='viewreport'>查看报表</view></navigator>
+    </view>
+    <view class='searchBox flex-item' bindtap='gotoPage' data-link="searchbug">
+      <icon type='search' size='12' class='searchIcon' color='#424242'></icon>
+      <label wx:if="{{searchstring.length==0}}">请输入缺陷名称</label>
+      <label class='searchString' wx:if="{{searchstring.length!=0}}">{{searchstring}}</label>
+    </view>
+  </view>
+  <!--筛选-->
+  <view class="filterBox flex-wrp {{filterShow||softShow||advfilterShow?'filterBoxTop':''}}">
+    <view class='filterItem flex-item' bindtap='changeFilterShow'>
+      <label>{{filter[currentFilter].name}}</label>
+      <image class='filterIcon' src='../images/header_dropdownG.png'></image>
+    </view>
+    <view class='filterItem flex-item' bindtap='changesoftShow'>
+      <label>{{soft[currentSoft].name}}</label>
+      <image class='filterIcon' src='../images/header_dropdownG.png'></image>
+    </view>
+    <view class='filterItem flex-item' bindtap='changeadvfilterShow'>
+      <label>高级筛选</label>
+      <image class='filterIcon1' src='../images/filtericon.png'></image>
+    </view>
+  </view>
+  <!--缺陷列表-->
+  <view class='bugList'>
+    <view class='bugItem flex-wrp' wx:for="{{bugs}}" bindtap="gotoDetail" data-index="{{index}}">
+      <view class='itemLine flex-wrp bugNamebox'>
+        <span class='bugId flex-item'>{{item.id}}</span>
+        <label class='bugName flex-item'>{{item.bugName}}</label>
+      </view>
+      <view class='itemLine'>
+        <label class='itemInfo itemInfo2 flex-wrp'>
+          <span class='floatleft flex-item'>创建人：</span>
+          <span class="itemInfogray flex-item">{{item.creUserName}}</span>
+        </label>
+        <label class='itemInfo itemInfo3 flex-wrp'>
+          <span class='floatleft flex-item'>提交时间：</span>
+          <span class="itemInfogray flex-item">{{item.bugCreateTimeStr}}</span>
+        </label>
+        <view class='clearfix'></view>
+      </view>
+      <view class='itemLine itemFooter'>
+        <span class='levelSpan'>{{item.bugLevelName}}</span>
+        <span class='levelSpan stateSpan'>{{item.bugStateName}}</span>
+        <image class='itemImg floatright' src='../images/itemImg1.png'></image>
+      </view>
+    </view>
+    <view class='nomore' wx:if="{{nomoredata}}">
+      没有更多了
+    </view>
+  </view>
+  <!--缺陷类型筛选-->
+  <view class='coverBox' wx:if="{{filterShow}}" bindtap="hideFilterShow">
+    <view class='selectUl'>
+      <view class="selectItem {{index==currentFilter?'selectedItem':''}}" wx:for="{{filter}}" bindtap="changeFilter" data-index="{{index}}">
+        <span>{{item.name}}</span>
+        <span class="floatright">{{item.num}}</span>
+        <view class='clearfix'></view>
+      </view>
+    </view>
+  </view>
+  <!--排序-->
+  <view class='coverBox' wx:if="{{softShow}}" bindtap="hidesoftShow">
+    <view class='selectUl'>
+      <view class="selectItem {{index==currentSoft?'selectedItem':''}}" wx:for="{{soft}}" bindtap="changeSoft" data-index="{{index}}">
+        <span>{{item.name}}</span>
+        <icon wx:if="{{item.selected}}" class='floatright' type='success_no_circle' size='18' color='#008bff'></icon>
+        <view class='clearfix'></view>
+      </view>
+    </view>
+  </view>
+  <!--高级筛选-->
+  <view class='coverBox' wx:if="{{advfilterShow}}" bindtap="hideadvfilterShow">
+    <view class='multSelectBox'>
+      <view class='multSelectTitle'>
+        <label class='title'>缺陷状态</label>
+      </view>
+      <view class='multSelectUl'>
+        <span data-index="{{index}}" catchtap="changeAdvstate" class="selectSpan {{statelistChecked[index]?'selectedSpan':''}}" wx:for="{{stateList}}">{{item.name}}</span>
+      </view>
+    </view>
+    <view class='multSelectBox'>
+      <view class='multSelectTitle'>
+        <label class='title'>缺陷等级</label>
+      </view>
+      <view class='multSelectUl'>
+        <span data-index="{{index}}" catchtap="changeAdvlevel" class="selectSpan {{item.selected?'selectedSpan':''}}" wx:for="{{levelList}}">{{item.name}}</span>
+      </view>
+    </view>
+    <view class='selectBtnBox'>
+      <button class='clearbtn floatleft' catchtap="clearAdvfilter">清除筛选</button>
+      <button class='okbtn floatright' bindtap='submitAdvfilter'>完成</button>
+      <view class='clearfix'></view>
+    </view>
+  </view>
+</view>

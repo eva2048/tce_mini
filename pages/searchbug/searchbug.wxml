@@ -1,0 +1,17 @@
+<!--pages/search/search.wxml-->
+<view class='container'>
+  <view class='searchBox flex-wrp'>
+    <view class='inputBox right'>
+      <icon class='searchIcon' type='search' size='12'></icon>
+      <input autofocus class='searchInput' bindinput='getText' type='text' value='{{searchstring}}'></input>
+      <icon bindtap='clearText' wx:if="{{searchstring.length!=0}}" class='clearIcon' type='clear' size='12'></icon>
+    </view>
+    <view bindtap='getList' class='left clear'>搜索</view>
+  </view>
+  <view class='searchList' wx:if="{{searchlist.length!=0}}">
+    <view class='searchItem flex-wrp' wx:for="{{searchlist}}" data-id="{{item.id}}" data-name="{{item.projectName}}" bindtap="searchProject">
+      <icon class='searchIcon' type='search' size='12'></icon>
+      <view class='name'>{{item.bugName}}</view>
+    </view>
+  </view>
+</view>

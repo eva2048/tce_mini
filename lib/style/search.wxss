@@ -1,0 +1,50 @@
+/* pages/search/search.wxss */
+.searchBox{
+  background: #0097ff;
+  align-items: center;
+  padding: 25rpx;
+}
+.searchBox .inputBox{
+  justify-content: flex-start;
+  align-items: center;
+  background: #fff;
+  padding: 0 10rpx 0 25rpx;
+  height: 26px;
+  border-radius: 5rpx;
+}
+.searchBox .inputBox .searchIcon{
+  margin-top: 2px;
+}
+.searchBox .inputBox .searchInput{
+  flex: 1;
+  color: #868686;
+  padding: 0 20rpx;
+}
+.searchBox .clear{
+  padding-left: 25rpx;
+  color: #fff;
+}
+/*搜索下拉列表*/
+.searchList{
+  background: #fff;
+  padding: 0 25rpx;
+  position: fixed;
+  top: 46px;
+  bottom: 0;
+  width: 100%;
+  overflow-y: auto
+}
+.searchItem{
+  height: 39px;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+.searchItem .searchIcon{
+  margin-right: 20rpx;
+  margin-top: 2px;
+}
+.searchItem .name{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

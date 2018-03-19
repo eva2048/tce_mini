@@ -1,0 +1,84 @@
+<!--pages/handle/handle.wxml-->
+<import src="../../component/wetoast/wetoast.wxml"/>
+<template is="wetoast" data="{{...__wetoast__}}"/>
+<view class='container'>
+  <view class='createList'>
+    <view class='createItem flex-wrp'>
+      <view class='left'>状态</view>
+      <view class='right'>
+        <view class='rightText'>
+          <picker bindchange="bindstateChange" value='0' range="{{states}}" range-key="{{'targetStateName'}}">
+            <view class="picker">
+              当前选择：{{states[handle.state].targetStateName}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='icon'>
+        <image src='../images/itemImg1.png'></image>
+      </view>
+    </view>
+    <view class='createItem flex-wrp'>
+      <view class='left'>处理人角色</view>
+      <view class='right'>
+        <view class='rightText'>
+          <picker bindchange="bindroleChange" value='0' range="{{role}}">
+            <view class="picker">
+              当前选择：{{role[handle.role]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='icon'>
+        <image src='../images/itemImg1.png'></image>
+      </view>
+    </view>
+    <view class='createItem flex-wrp'>
+      <view class='left'>处理人</view>
+      <view class='right'>
+        <view class='rightText'>
+          <picker bindchange="bindhandlerChange" value='0' range="{{handles}}" range-key="{{'userName'}}">
+            <view class="picker">
+              当前选择：{{handles[handle.handler].userName}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='icon'>
+        <image src='../images/itemImg1.png'></image>
+      </view>
+    </view>
+  </view>
+  <view class='createList' wx:if="{{isreject}}">
+    <view class='createItem flex-wrp'>
+      <view class='left'>驳回类型</view>
+      <view class='right'>
+        <view class='rightText'>
+          <picker bindchange="bindrejecttypeChange" value='0' range="{{rejecttype}}">
+            <view class="picker">
+              当前选择：{{rejecttype[handle.rejecttype]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='icon'>
+        <image src='../images/itemImg1.png'></image>
+      </view>
+    </view>
+    <navigator url='/pages/describe/describe?describe={{describe}}'>
+    <view class='createItem flex-wrp'>
+      <view class='left'>驳回原因</view>
+      <view class='right'>
+        <view class='rightText'>
+          {{describe}}
+        </view>
+      </view>
+      <view class='icon'>
+        <image src='../images/itemImg1.png'></image>
+      </view>
+    </view>
+    </navigator>
+  </view>
+  <!--处理按钮-->
+  <view bindtap='submitHandle' class='bugdetailBtn' wx:if="{{states.length!=0||role.length!=0||handles.length!=0}}">提交</view>
+</view>

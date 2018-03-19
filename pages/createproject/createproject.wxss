@@ -1,0 +1,33 @@
+/* pages/createproject/createproject.wxss */
+/*项目模块*/
+.moduleList{
+  padding: 20rpx 0rpx 5rpx;
+}
+.noModule{
+  padding-bottom: 20rpx;
+  color: #aaa;
+}
+.moduleItem{
+  display: inline-block;
+  position: relative;
+  margin: 0 15rpx 15rpx 0;
+  z-index: 1;
+}
+.moduleItem .text{
+  position: relative;
+  padding: 10rpx;
+  max-width: 200rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border: 1px solid #0097ff;
+  color: #0097ff;
+  z-index: 2;
+}
+.moduleItem .delete{
+  position: absolute;
+  right: -10rpx;
+  top: -8rpx;
+  z-index: 3;
+  background: #fff;
+}

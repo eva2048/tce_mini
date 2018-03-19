@@ -1,0 +1,16 @@
+<!--pages/bugdescribe/bugdescribe.wxml-->
+<import src="../../component/wetoast/wetoast.wxml"/>
+<template is="wetoast" data="{{...__wetoast__}}"/>
+<view class='container'>
+  <view class='createbugTitle'>
+    描述内容
+  </view>
+  <view class='textareaBox'>
+    <textarea cursor='{{cursor}}' maxlength='500' value='{{currentdescribe}}' bindinput='gettextarea'></textarea>
+    <view class='size'>
+      <span class="current">{{currentlength}}</span>/500
+    </view>
+  </view>
+  <view style='color:red;margin-top:20px;margin-left:30rpx;'>注：请勿输入表情等特殊字符，提交后系统会将其自动过滤</view>
+  <view bindtap='binddescribe' class="submitBtn">保存</view>
+</view>

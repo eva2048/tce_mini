@@ -1,0 +1,327 @@
+/**app.wxss**/
+@import "component/wetoast/wetoast.wxss";
+page{
+  background: #efeff4;
+  height: 100%;
+  width: 100%;
+}
+.container {
+  height: 100%;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  box-sizing: border-box;
+  font-family: "微软雅黑";
+  font-size: 12px;
+} 
+.container1 {
+  height: 100%;
+  box-sizing: border-box;
+  font-family: "微软雅黑";
+  font-size: 12px;
+} 
+.flex-wrp{
+    display:flex;
+    display: -webkit-flex;
+}
+.flex-wrp .left{
+  flex-shrink: 0;
+  display: flex;
+}
+.flex-wrp .right{
+  flex-grow:1;
+  display: flex;
+  justify-content: flex-end;
+}
+.floatleft{
+  float: left
+}
+.floatright{
+  float: right
+}
+.clearfix{
+  clear: both
+}
+/*下拉筛选*/
+.coverBox{
+  position: fixed;
+  top: 44px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 103
+}
+/*全屏*/
+.coverBox1{
+  top:0;
+}
+.coverBox .selectUl{
+  width: 100%;
+  background: #fff;
+}
+.coverBox .selectUl .selectItem{
+  color:#6b6b6b;
+  box-sizing: border-box;
+  padding: 26rpx 20rpx;
+  border-bottom: 1px solid #eee;
+}
+.coverBox .selectUl .selectedItem{
+  color: #0097ff; 
+}
+.coverBox .selectUl .selectItemCenter{
+  font-size: 30rpx;
+  text-align: center;
+  border-bottom: 4px solid #eee; 
+}
+.coverBox .bottomLay{
+  position: absolute;
+  bottom: -4rpx;
+}
+/*新建按钮*/
+.createBtn{
+  position: fixed;
+  bottom: 20rpx;
+  right: 20rpx;
+  z-index: 102
+}
+.createBtn image{
+  width: 140rpx;
+  height: 140rpx;
+}
+
+/*处理按钮*/
+.bugdetailBtn{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background: #0097ff;
+  color: #fff;
+  line-height: 88rpx;
+  font-size: 32rpx;
+  text-align: center
+}
+/*图片列表*/
+.imgList{
+  width: 100%;
+  white-space: nowrap;
+}
+.imgList .img{
+  width: 95rpx;
+  height: 130rpx;
+  margin: 20rpx;
+}
+.imgList .imgBox{
+  position: relative;
+  padding: 10rpx;
+  border: 1px solid #eee;
+  margin: 15rpx;
+  display: inline-block
+}
+.imgList .imgBox .img{
+  margin: 0;
+}
+.imgList .delIcon{
+  position: absolute;
+  top: -3rpx;
+  right: -3rpx;
+}
+
+/*创建列表*/
+.createbugTitle{
+  line-height: 68rpx;
+  color: #b5b5b5;
+  padding: 0 20rpx;
+}
+.createList{
+  padding: 0 20rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+.createList .createItem{
+  height: 88rpx;
+  border-bottom: 1px solid #eee;
+}
+.createList .createItem:last-child{
+  border: 0;
+}
+.createList .createItem .left{ 
+  width: 200rpx; 
+  align-items:center;
+  font-size: 14px;
+  color: #070707;
+}
+.createList .createItem .right{
+  width: 100%;
+  align-items:center;
+  overflow: hidden;  
+}
+.createList .createItem .right .inputText{
+  width: 100%;
+  text-align: right;
+  color: #aaa;
+}
+.createList .createItem .right .rightText{ 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #aaa;
+}
+.createList .createItem .right .rightText .picker{
+  padding: 20rpx 0rpx;
+  min-width: 400rpx;
+  text-align: right
+}
+.createList .createItem .icon{
+  display: flex;
+  display: -webkit-flex; 
+  flex-shrink: 0;
+  align-items:center;
+  -webkit-align-items:center;
+  justify-content: flex-end;
+  -webkit-justify-content: flex-end;
+  width: 47rpx;
+}
+.createList .createItem .icon image{
+  width: 16px;
+  height: 16px;
+}
+/*文件上传*/
+.fileUpload{
+  background: #fff;
+  padding: 0 20rpx;
+  margin-bottom: 20rpx;
+}
+.fileUpload .title{
+  height: 44px;
+  align-items: center;
+  font-size: 14px;
+  color: #070707;
+  border-bottom: 1px solid #eee
+}
+.fileUpload .title .uploadIcon{
+  width: 15px;
+  height: 15px;
+}
+/*文件列表*/
+.fileItem {
+  height: 44px;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+.fileItem:last-child{
+  border: 0;
+}
+.fileItem .name{
+  width: 600rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #3e3e3f;
+}
+
+
+/*新建模块*/
+.fullcoverBox{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 1002;
+}
+.modalBox{
+  width: 100%;
+  margin-top: 250rpx;
+  display: flex;
+  justify-content: space-around;
+}
+.modal{
+  width: 640rpx;
+  background: #fff;
+  border-radius: 15rpx;
+  overflow: hidden;
+}
+.modalHeader{
+  background: #f9f9f9;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 0 25rpx;
+  font-size: 14px;
+  color: #8b8b90;
+}
+.modalHeader .right{
+  justify-content: flex-start;
+}
+.modalHeader .closeIcon{
+  width: 14px;
+  height: 14px;
+  margin-top: 2px;
+  justify-content: flex-end;
+}
+.modalBody{
+  padding: 50rpx;
+}
+.modalBody .inputText{
+  background: #ececec;
+  height: 42px;
+  padding: 0 20rpx;
+}
+.modalBtnBox{
+  padding: 0 50rpx 30rpx;
+  justify-content: space-between;
+}
+.modalBtn{
+  width: 45%;
+  background: #0097ff;
+  line-height: 42px;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 10rpx;
+  letter-spacing: 4rpx;
+}
+.modalBtnG{
+  color: #9a9a9f;
+  border: 1px solid #dbe2e6;
+  background: #fff;
+}
+/*驳回理由*/
+.textareaBox{
+  background: #fff;
+  color: #6b6b6b;
+}
+.textareaBox textarea{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 25rpx;
+}
+.textareaBox .size{
+  text-align: right;
+  padding: 0 25rpx 5px;
+}
+.textareaBox .size .current{
+  color: #0097ff;
+}
+.submitBtn{
+  width: 700rpx;
+  margin: 0 auto;
+  background: #0097ff;
+  color: #fff;
+  line-height: 44px;
+  text-align: center;
+  border-radius: 10rpx;
+  margin-top: 20px;
+  font-size: 15px;
+  letter-spacing: 4rpx;
+}
+.canvas {
+    width: 100%;
+    height: 200px;
+}
+
+.marginb_100{
+  padding-bottom: 100rpx;
+}
